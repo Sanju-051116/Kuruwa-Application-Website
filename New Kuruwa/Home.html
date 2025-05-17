@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Kuruwa</title>
+  <link rel="stylesheet" href="style/Home.css" />
+  <style>
+        .mobile-avatar-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .mobile-avatar-wrapper img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Reuse avatar-dropdown style */
+    .avatar-dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        flex-direction: column;
+        min-width: 120px;
+        z-index: 50;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem;
+        position: relative;
+    }
+
+    .nav_left_section a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: blue;
+        text-decoration: none;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #333;
+        border-radius: 2px;
+    }
+
+    /* Mobile Dropdown */
+    .dropdown {
+        display: none;
+        position: absolute;
+        right: 1rem;
+        top: 3.5rem;
+        width: 160px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        flex-direction: column;
+        z-index: 50;
+    }
+
+    .dropdown a {
+        padding: 0.75rem 1rem;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .dropdown a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Desktop Menu */
+    .menu-desktop {
+        display: none;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .menu-desktop a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .menu-desktop a:hover {
+        color: #3b82f6;
+    }
+
+    /* User Avatar */
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #3b82f6;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Avatar Dropdown */
+    .avatar-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        width: 140px;
+        z-index: 100;
+        flex-direction: column;
+    }
+
+    .avatar-dropdown a {
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .avatar-dropdown a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+        .hamburger-wrapper {
+            display: none;
+        }
+
+        .menu-desktop {
+            display: flex;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+<!-- Inside nav -->
+<nav>
+    <div class="nav_left_section">
+        <a href="/">Kuruwa</a>
+    </div>
+
+    <!-- Hamburger and Mobile Menu -->
+    <div class="hamburger-wrapper">
+        <div class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dropdown" id="mobile-menu">
+            <!-- Mobile Avatar Section - Clean Look -->
+            <div class="mobile-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="mobile-avatar-btn">
+                <div class="avatar-dropdown" id="mobile-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <a href="Home.html">Home</a>
+            <a href="Pricing.html">Pricing</a>
+            <a href="Contact_Us.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+    <!-- Desktop Menu + Avatar -->
+    <div class="menu-desktop">
+        <a href="Home.html">Home</a>
+        <a href="Pricing.html">Pricing</a>
+        <a href="Contact_Us.html">Contact Us</a>
+        <a href="login.html">Login</a>
+        <div class="user-avatar" id="avatar-btn">
+            <img src="static/image/profile.jpg" alt="User Profile">
+            <div class="avatar-dropdown" id="avatar-dropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Settings</a>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</header>
+
+<script>
+    const isLoggedIn = false; // Change to true after user logs in
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopMenu = document.querySelector('.menu-desktop');
+
+    // ----------- Mobile Avatar Logic -----------
+    if (isLoggedIn) {
+        const mobileProfileHTML = `
+            <div class="mobile-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="mobile-avatar-btn">
+                <div class="avatar-dropdown" id="mobile-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+        `;
+        mobileMenu.insertAdjacentHTML('afterbegin', mobileProfileHTML);
+
+        const mobileAvatarBtn = document.getElementById('mobile-avatar-btn');
+        const mobileAvatarDropdown = document.getElementById('mobile-avatar-dropdown');
+
+        mobileAvatarBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            mobileAvatarDropdown.style.display = mobileAvatarDropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!mobileAvatarBtn.contains(e.target)) {
+                mobileAvatarDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    // ----------- Desktop Avatar Logic -----------
+    if (isLoggedIn) {
+        desktopMenu.innerHTML = `
+            <div class="desktop-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="desktop-avatar-btn">
+                <div class="avatar-dropdown" id="desktop-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+        `;
+    } else {
+        desktopMenu.innerHTML = `
+            <a href="Home.html">Home</a>
+            <a href="Pricing.html">Pricing</a>
+            <a href="Contact_Us.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        `;
+    }
+
+    if (isLoggedIn) {
+        const desktopAvatarBtn = document.getElementById('desktop-avatar-btn');
+        const desktopAvatarDropdown = document.getElementById('desktop-avatar-dropdown');
+
+        desktopAvatarBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            desktopAvatarDropdown.style.display = desktopAvatarDropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!desktopAvatarBtn.contains(e.target)) {
+                desktopAvatarDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    // ----------- Hamburger Menu Toggle -----------
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+
+    hamburgerBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.style.display = 'none';
+        }
+    });
+
+</script>
+
+
+<main class="main_section">
+    <div class="heading">
+        <div class="first_text">
+            <div>
+                <h1> Book a Caregiver, Anytime you need</h1>
+            </div>
+        </div>
+        <div class="second_text">
+            <div>
+                Get professional support for your loved ones in hospitals - quick, sage and eassy.
+            </div>
+        </div>
+        <div class="two_buttons gap-1 flex">
+            <button class="button_one">
+               <a href="Browse_caregiver.html" class="button_one">Browse Caregiver</a> 
+            </button>
+            <button class="button_two">
+                <a href="book.html" class="button_two">Book Now</a>   
+            </button>
+        </div>
+    </div>
+
+    <div class="header_image">
+        <img src="static/image/nurse.avif" class="phoyo" alt="women with Nurse" srcset=""/>
+    </div>
+</main>
+<section class="works">
+    <div>
+        <h1 class="how_it_works">How it Works</h1>
+    </div>
+    <section class="mid_manage">
+        <div class="mid_image">
+            <img src="static/image/Screenshot 2025-04-15 130512.png" alt="user_image" srcset=""/>
+            <h4 class="mid_text">Choose a Caregiver</h4>
+            <p class="paragraph"> Explore available caregivers ready for hire</p>
+        </div>
+
+        <div class="mid_image">
+            <img src="static/image/Screenshot 2025-04-15 131317.png" alt="date_time" srcset=""/>
+            <h4 class="mid_text">Select Date &amp; Time</h4>
+            <p class="paragraph"> Select based on hourly rates and availability</p>
+        </div>
+
+        <div class="mid_image">
+            <img src="static/image/Screenshot 2025-04-15 131620.png" alt="Confir_booking" srcset=""/>
+            <h4 class="mid_text">Confirm Booking</h4>
+            <p class="paragraph">Securely confirm a your caregiver rental</p>
+        </div>
+
+        <div class="mid_image">
+            <img src="static/image/Screenshot 2025-04-15 131836.png" alt="peace"/>
+            <h4 class="mid_text">Peace of Mind!</h4>
+            <p class="paragraph">The caregiver attends to the patients needs</p>
+        </div>
+    </section>
+</section>
+
+<section class="About_kuruwa">
+    <div class="definition">
+        <h3>Why Kuruwa?</h3>
+        <p>Kuruwa introduces a unique, rental-based-bised caregiving martel tailered specifically for hospital
+            envi-tranments. Unlike traditional fithems care services, our on demand purjfrom allowa eral time
+            caregiver bookings providing flexability eande-ibe-iltedrate-need. We combine convenience,
+            affortiability, and structured caregiving under professssional hospital&nbsp;guidance..</p>
+    </div>
+    <div class="new_para">
+        <p>kuruwa made finding a caregiver for my father so simple and stress-free, The entire process was seamless
+            and the caregiver was fantastic. <br/>
+            "Ram Thapa"
+        </p>
+    </div>
+</section>
+   <section class="testimonial">
+            <h2>“Healthcare professionals attending to patients with care”</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="static/image/home2.webp" alt="home1"></div>
+                <div class="gallery-item"><img src="static/image/home3.webp" alt="home2"></div>
+                <div class="gallery-item"><img src="static/image/home5.webp" alt="home5"></div>
+            </div>
+                <div class="gallery-grid">
+                <div class="gallery-item"><img src="static/image/home4.webp" alt="home6"></div>
+                <div class="gallery-item"><img src="static/image/home1.webp" alt="home4"></div>
+                <div class="gallery-item"><img src="static/image/home6.webp" alt="home3"></div>
+            </div>
+        </section>
+<section class="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-card">
+            <img src="static/image/user1.jpg" alt="Ramesh Thapa">
+            <p>"Kuruwa made it so easy to find a professional caregiver for my elderly parents. The caregivers are polite, well-trained, and trustworthy. Great platform!"</p>
+            <h3>Ramesh Thapa</h3>
+            <span>Bhaktapur</span>
+        </div>
+        <div class="testimonial-card">
+            <img src="static/image/user2.jpg" alt="Anju Koirala">
+            <p>"As a busy working mom, I found a wonderful caregiver through Kuruwa. Transparent profiles & easy booking — love it!"</p>
+            <h3>Anju Koirala</h3>
+            <span>Kathmandu</span>
+        </div>
+        <div class="testimonial-card">
+            <img src="static/image/user3.jpg" alt="Binod Shrestha">
+            <p>"Highly professional service! Skilled, compassionate caregivers. Booking was hassle-free. Definitely recommending Kuruwa."</p>
+            <h3>Binod Shrestha</h3>
+            <span>Pokhara</span>
+        </div>
+    </div>
+</section>
+
+  <footer class="main_footer">
+       
+    <div class="footer-content">
+        <div class="links">
+            <a href="About.html" class="linking">About</a>
+            <a href="Contact_Us.html" class="linking">Contact</a>
+            <a href="Privacy_Policy.html"class="linking">Privacy Policy</a>
+            <a href="Terms.html" class="linking">Terms</a>
+        </div>
+    </div>
+
+    <div class="footer_fonts">
+        <div class="Face">
+        <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div class="Face">
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="Face">
+         <i class="fa-brands fa-twitter"></i>
+        </div>
+        <div class="Face">
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+  

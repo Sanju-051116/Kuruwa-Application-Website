@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caregiver Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .profile-card { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .profile-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <button onclick="history.back()" style="
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+">
+    ← Back
+</button>
+
+
+    <div class="profile-card" id="profile">
+        <!-- Profile info will load here -->
+    </div>
+
+    <script>
+        const caregivers = [
+            {
+                id: 1,
+                name: "Ram Bahadur Thapa",
+                image: "static/image/Michel.webp",
+                rating: "★ (2)",
+                experience: "Beginner",
+                location: "Lalitpur, Nepal",
+                price: "Rs300/hr",
+                about: "A dedicated caregiver passionate about helping elders and patients with compassion."
+            },
+            {
+                id: 2,
+                name: "Hari Pandey",
+                image: "static/image/lahai.webp",
+                rating: "★★★★ (14)",
+                experience: "Intermediate",
+                location: "Chitwan",
+                price: "Rs400/hr",
+                about: "Experienced in elderly care and daily assistance with a friendly attitude."
+            },
+            {
+                id: 3,
+                name: "Trishana Gurung",
+                image: "static/image/expo.webp",
+                rating: "★★★★★ (21)",
+                experience: "5 years of Experience",
+                location: "Boudha",
+                price: "Rs550/hr",
+                about: "Specializes in post-surgery care and patient rehabilitation."
+            },
+            {
+                id: 4,
+                name: "Anjali Thapa",
+                image: "static/image/trishana .webp",
+                rating: "★★ (18)",
+                experience: "Intermediate",
+                location: "Chabahil",
+                price: "Rs300/hr",
+                about: "Loves to provide emotional support and personal care to patients."
+            }
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get('id'));
+        const caregiver = caregivers.find(cg => cg.id === id);
+
+        if (caregiver) {
+            document.getElementById('profile').innerHTML = `
+                <img src="${caregiver.image}" alt="${caregiver.name}">
+                <h2>${caregiver.name}</h2>
+                <p><strong>Rating:</strong> ${caregiver.rating}</p>
+                <p><strong>Experience:</strong> ${caregiver.experience}</p>
+                <p><strong>Location:</strong> ${caregiver.location}</p>
+                <p><strong>Price:</strong> ${caregiver.price}</p>
+                <p><strong>About:</strong> ${caregiver.about}</p>
+            `;
+        } else {
+            document.getElementById('profile').innerHTML = `<p>Caregiver not found.</p>`;
+        }
+    </script>
+
+</body>
+</html>

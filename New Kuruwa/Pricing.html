@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Kuruwa</title>
+  <link rel="stylesheet" href="style/pricing.css" />
+  <style>
+        .mobile-avatar-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .mobile-avatar-wrapper img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Reuse avatar-dropdown style */
+    .avatar-dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        flex-direction: column;
+        min-width: 120px;
+        z-index: 50;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 0;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem;
+        position: relative;
+    }
+
+    .nav_left_section a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: blue;
+        text-decoration: none;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #333;
+        border-radius: 2px;
+    }
+
+    /* Mobile Dropdown */
+    .dropdown {
+        display: none;
+        position: absolute;
+        right: 1rem;
+        top: 3.5rem;
+        width: 160px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        flex-direction: column;
+        z-index: 50;
+    }
+
+    .dropdown a {
+        padding: 0.75rem 1rem;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .dropdown a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Desktop Menu */
+    .menu-desktop {
+        display: none;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .menu-desktop a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .menu-desktop a:hover {
+        color: #3b82f6;
+    }
+
+    /* User Avatar */
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #3b82f6;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Avatar Dropdown */
+    .avatar-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        width: 140px;
+        z-index: 100;
+        flex-direction: column;
+    }
+
+    .avatar-dropdown a {
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .avatar-dropdown a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+        .hamburger-wrapper {
+            display: none;
+        }
+
+        .menu-desktop {
+            display: flex;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+<!-- Inside nav -->
+<nav>
+    <div class="nav_left_section">
+        <a href="Home.html">Kuruwa</a>
+    </div>
+
+    <!-- Hamburger and Mobile Menu -->
+    <div class="hamburger-wrapper">
+        <div class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dropdown" id="mobile-menu">
+            <!-- Mobile Avatar Section - Clean Look -->
+            <div class="mobile-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="mobile-avatar-btn">
+                <div class="avatar-dropdown" id="mobile-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <a href="Home.html">Home</a>
+            <a href="Pricing.html">Pricing</a>
+            <a href="Contact_Us.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+    <!-- Desktop Menu + Avatar -->
+    <div class="menu-desktop">
+        <a href="Home.html">Home</a>
+        <a href="Pricing.html">Pricing</a>
+        <a href="Contact_Us.html">Contact Us</a>
+        <a href="login.html">Login</a>
+        <div class="user-avatar" id="avatar-btn">
+            <img src="static/image/profile.jpg" alt="User Profile">
+            <div class="avatar-dropdown" id="avatar-dropdown">
+                <a href="profile.html">My Profile</a>
+                <a href="settings.html">Settings</a>
+                <a href="logout.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</header>
+
+<script>
+    const isLoggedIn = false; // Change to true after user logs in
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopMenu = document.querySelector('.menu-desktop');
+
+    // ----------- Mobile Avatar Logic -----------
+    if (isLoggedIn) {
+        const mobileProfileHTML = `
+            <div class="mobile-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="mobile-avatar-btn">
+                <div class="avatar-dropdown" id="mobile-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+        `;
+        mobileMenu.insertAdjacentHTML('afterbegin', mobileProfileHTML);
+
+        const mobileAvatarBtn = document.getElementById('mobile-avatar-btn');
+        const mobileAvatarDropdown = document.getElementById('mobile-avatar-dropdown');
+
+        mobileAvatarBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            mobileAvatarDropdown.style.display = mobileAvatarDropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!mobileAvatarBtn.contains(e.target)) {
+                mobileAvatarDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    // ----------- Desktop Avatar Logic -----------
+    if (isLoggedIn) {
+        desktopMenu.innerHTML = `
+            <div class="desktop-avatar-wrapper">
+                <img src="static/image/profile.jpg" alt="User Profile" id="desktop-avatar-btn">
+                <div class="avatar-dropdown" id="desktop-avatar-dropdown">
+                    <a href="profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="logout.html">Logout</a>
+                </div>
+            </div>
+        `;
+    } else {
+        desktopMenu.innerHTML = `
+            <a href="Home.html">Home</a>
+            <a href="Pricing.html">Pricing</a>
+            <a href="Contact_Us.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        `;
+    }
+
+    if (isLoggedIn) {
+        const desktopAvatarBtn = document.getElementById('desktop-avatar-btn');
+        const desktopAvatarDropdown = document.getElementById('desktop-avatar-dropdown');
+
+        desktopAvatarBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            desktopAvatarDropdown.style.display = desktopAvatarDropdown.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!desktopAvatarBtn.contains(e.target)) {
+                desktopAvatarDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    // ----------- Hamburger Menu Toggle -----------
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+
+    hamburgerBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.style.display = 'none';
+        }
+    });
+
+</script>
+
+<main>
+  <section class="pricing-hero">
+    <div class="text">
+      <h1>Flexible,<br>Affordable Pricing</h1>
+      <p>Hire a caregiver for your loved one in the hospital at an hourly rate.</p>
+    </div>
+    <div class="image">
+      <img src="static/image/payment_photo.avif" alt="Caregiver">
+    </div>
+  </section>
+
+  <section class="rates">
+    <h2>Hourly Rates</h2>
+    <p>
+      Our hourly rates vary based on the caregiver's experience level and availability.
+      This variability allows you to choose a caregiver that meets both your needs and budget.
+    </p>
+
+    <div class="rate-cards">
+      <div class="card">
+          <h3>Begineer</h3>
+        
+        <p>2 hrs Minimum Booking</p>
+          <p>Daytime Availability</p>
+          <p>Per hour booking price Rs50</p>
+        
+        <p >Per day booking price Rs700 </p>
+      </div>
+      <div class="card">
+             <h3>Intermediate</h3>
+          <p>3 hrs Minimum Booking</p>
+          <p>Day & Evening Availabipty</p>
+          <p>Progress Report</p>
+          <p>Per hour booking price Rs100</p>
+          <p>Per day booking price Rs1400 </p>
+
+        </ul>
+        <p class="price">Rs1000/hr</p>
+      </div>
+      <div class="card">
+        <h3>Expert</h3>
+        
+          <p>Highly Trained Caregiver</p>
+          <p>4 hrs Minimum Booking</p>
+          <p>24/7 Availabipty</p>
+          <p>Real-time Updates</p>
+          <p>Doctor Feedback Integration</p>
+          <p>Per hour booking price Rs150</p>
+          <p >Per day booking price Rs2100 </p>
+        </ul>
+        <p class="price">Rs1500/hr</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="commitment">
+    <h2>No Long-Term Commitment</h2>
+    <p>
+      With Kuruwa, you can book a caregiver for just the hours you need. There are no contracts
+      or long-term obligations—simply book in real-time based on your immediate requirements.
+    </p>
+  </section>
+</main>
+<footer class="main_footer">
+       
+    <div class="footer-content">
+        <div class="links">
+            <a href="About.html" class="linking">About</a>
+            <a href="Contact_Us.html" class="linking">Contact</a>
+            <a href="Privacy_Policy.html"class="linking">Privacy Policy</a>
+            <a href="Terms.html" class="linking">Terms</a>
+        </div>
+    </div>
+
+    <div class="footer_fonts">
+        <div class="Face">
+        <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div class="Face">
+            <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="Face">
+         <i class="fa-brands fa-twitter"></i>
+        </div>
+        <div class="Face">
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
